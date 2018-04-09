@@ -1,10 +1,3 @@
-require(dplyr)
-require(tibble)
-require(reshape2)
-require(ggdendro)
-require(RColorBrewer)
-
-
 #' Generate a ggplot2 heatmap with row and column dendrograms
 #'
 #' @param dataMatrix A data.frame containing the input data.
