@@ -1,9 +1,20 @@
 Package: ggheatmap
-Title: What the Package Does (one line, title case)
+Title: Generate pretty ggplot2 heatmaps row and column dendrograms
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Tommaso", "Leonardi", email = "tom@itm6.xyz", role = c("aut", "cre"))
+Description: Generates pretty heatmap using ggplot2. The rows and heatmaps are reordered
+    using hierarchical clustering and the respective dendrograms are printed to the side
+    of the heatmap.
 Depends: R (>= 3.4.4)
-License: What license is it under?
+License: MIT
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
+Imports:
+	dplyr,
+	tibble,
+	ggplot2,
+	reshape2,
+	ggdendro,
+	RColorBrewer,
+	cowplot
