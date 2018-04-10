@@ -1,5 +1,5 @@
 Package: ggheatmap
-Title: Generate pretty ggplot2 heatmaps row and column dendrograms
+Title: Generate pretty ggplot2 heatmaps with row and column dendrograms
 Version: 0.0.0.9000
 Authors@R: person("Tommaso", "Leonardi", email = "tom@itm6.xyz", role = c("aut", "cre"))
 Description: Generates pretty heatmap using ggplot2. The rows and heatmaps are reordered

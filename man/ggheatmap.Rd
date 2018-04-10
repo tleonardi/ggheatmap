@@ -9,6 +9,8 @@ ggheatmap(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0.5,
   distMethod = "euclidean", clustMethod = "complete")
 }
 \arguments{
+\item{dataMatrix}{A data.frame containing the input data.}
+
 \item{orderCol}{Reorder the columns (default=T)}
 
 \item{orderRow}{Reorder the rows (default=T)}

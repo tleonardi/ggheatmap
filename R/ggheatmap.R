@@ -11,6 +11,7 @@
 #' @param clustMethod Clustering method (default='complete', see ?hclust)
 #' @examples ggheatmap(mtcars)
 #' @importFrom magrittr %>%
+#' @importFrom ggplot2 aes
 #' @export 
 ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0.5, 
     fontSize = 20, colorScheme = "Spectral", scaleName = "value", distMethod = "euclidean", 
@@ -60,8 +61,7 @@ ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0
     if (orderCol) {
         dendro_data_col <- ggdendro::dendro_data(dd.col, type = "rectangle")
         dendro_col <- cowplot::axis_canvas(heat_plot, axis = "x") + 
-		      ggplot2::geom_segment(data = segment(dendro_data_col), 
-                          aes(x = x, y = y, xend = xend, yend = yend), size = dendroLineSize)
+		      ggplot2::geom_segment(data = segment(dendro_data_col), aes(x = x, y = y, xend = xend, yend = yend), size = dendroLineSize)
         final_plot <- cowplot::insert_xaxis_grob(final_plot, dendro_col, grid::unit(0.2, 
                           "null"), position = "top")
     }
