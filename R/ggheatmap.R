@@ -11,7 +11,6 @@
 #' @param clustMethod Clustering method (default='complete', see ?hclust)
 #' @examples ggheatmap(mtcars)
 #' @importFrom magrittr %>%
-#' @importFrom ggplot2 aes
 #' @export 
 ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0.5, 
     fontSize = 20, colorScheme = "Spectral", scaleName = "value", distMethod = "euclidean", 
@@ -36,7 +35,7 @@ ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0
         data_m$variable <- factor(data_m$variable, levels = ordered_col_names)
     }
     
-    heat_plot <- ggplot2::ggplot(data_m, aes(x = variable, y = rowname, fill = value)) + 
+    heat_plot <- ggplot2::ggplot(data_m, ggplot::aes(x = variable, y = rowname, fill = value)) + 
                      ggplot2::geom_tile() + 
 		     ggplot2::theme_minimal() + 
 		     ggplot2::theme(axis.line = element_line(size = 0),
@@ -51,7 +50,7 @@ ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0
     if (orderRow) {
         dendro_data_row <- ggdendro::dendro_data(dd.row, type = "rectangle")
         dendro_row <- cowplot::axis_canvas(heat_plot, axis = "y", coord_flip = TRUE) + 
-                          ggplot2::geom_segment(data = segment(dendro_data_row), aes(y = -y, 
+                          ggplot2::geom_segment(data = segment(dendro_data_row), ggplot::aes(y = -y, 
 	                  x = x, xend = xend, yend = -yend), size = dendroLineSize) + 
                           ggplot2::coord_flip()
         final_plot <- cowplot::insert_yaxis_grob(final_plot, dendro_row, grid::unit(0.2, 
@@ -61,7 +60,7 @@ ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0
     if (orderCol) {
         dendro_data_col <- ggdendro::dendro_data(dd.col, type = "rectangle")
         dendro_col <- cowplot::axis_canvas(heat_plot, axis = "x") + 
-		      ggplot2::geom_segment(data = segment(dendro_data_col), aes(x = x, y = y, xend = xend, yend = yend), size = dendroLineSize)
+		      ggplot2::geom_segment(data = segment(dendro_data_col), ggplot::aes(x = x, y = y, xend = xend, yend = yend), size = dendroLineSize)
         final_plot <- cowplot::insert_xaxis_grob(final_plot, dendro_col, grid::unit(0.2, 
                           "null"), position = "top")
     }
