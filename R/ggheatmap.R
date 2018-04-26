@@ -6,6 +6,7 @@
 #' @param dendroLineSize Size of the dendrogram lines (default=0.5)
 #' @param fontSize Font size (default=20)
 #' @param colorPalette Color palette (default='Spectral')
+#' @param revColors Invert color scale
 #' @param scaleName Name of the colorscale (default='value')
 #' @param distMethod Distance method (default='euclidean', see ?dist)
 #' @param clustMethod Clustering method (default='complete', see ?hclust)
@@ -14,7 +15,7 @@
 #' @export 
 ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0.5, 
     fontSize = 20, colorPalette = "Spectral", scaleName = "value", distMethod = "euclidean", 
-    clustMethod = "complete") {
+    clustMethod = "complete", revColors=F) {
     
     data_m <- tibble::rownames_to_column(dataMatrix) %>% reshape2::melt()
     
@@ -43,7 +44,7 @@ ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0
                      ggplot2::scale_y_discrete(position = "right") + 
                      ggplot2::xlab("") + 
 		     ggplot2::ylab("") + 
-		     ggplot2::scale_fill_distiller(palette = colorPalette, name = scaleName)
+		     ggplot2::scale_fill_distiller(palette = colorPalette, name = scaleName, direction=ifelse(revColors,0,1))
     
     final_plot <- heat_plot
 
