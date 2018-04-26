@@ -40,7 +40,8 @@ ggheatmap <- function(dataMatrix, orderCol = T, orderRow = T, dendroLineSize = 0
                      ggplot2::geom_tile() + 
 		     ggplot2::theme_minimal() + 
 		     ggplot2::theme(axis.line = ggplot2::element_line(size = 0),
-		         text = ggplot2::element_text(size = fontSize)) + 
+		         text = ggplot2::element_text(size = fontSize),
+			 axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5)) + 
                      ggplot2::scale_y_discrete(position = "right") + 
                      ggplot2::xlab("") + 
 		     ggplot2::ylab("") + 
